@@ -9,14 +9,15 @@ export const registerSchema = Yup.object({
 		.required("Required !"),
 	email: Yup.string().email("Invalid email address !").required("Required !"),
 	password: Yup.string()
-		.min(6, "Must be 7 character or more !")
+		.min(7, "Must be 7 character or more !")
 		.required("Required !"),
 	passwordVerifi: Yup.string()
 		.oneOf([Yup.ref("password"), null], "Password must match !")
 		.required("Required !"),
 	age: Yup.number()
 		.typeError("you must specify a number")
-		.required("Required !"),
+		.required("Required !")
+		.min(16, "You must be over 16 years old"),
 	acceptTerms: Yup.bool().oneOf(
 		[true],
 		"Accept Terms & Conditions is required !"
